@@ -15,10 +15,10 @@ class Email
         $this->mail = new PHPMailer(true);
         $this->mail->SMTPDebug = 2;                      //Enable verbose debug output
         $this->mail->isSMTP();                                            //Send using SMTP
-        $this->mail->Host = 'smtp.sendgrid.net';                     //Set the SMTP server to send through
+        $this->mail->Host = 'smtp.example.com';                     //Set the SMTP server to send through
         $this->mail->SMTPAuth = true;                                   //Enable SMTP authentication
-        $this->mail->Username = 'apikey';                     //SMTP username
-        $this->mail->Password = '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';                               //SMTP password
+        $this->mail->Username = 'user@example.com';                     //SMTP username
+        $this->mail->Password = 'secret';                               //SMTP password
         $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $this->mail->Port = 587;
 
@@ -26,7 +26,7 @@ class Email
         $this->mail->setLanguage("br");
 
         $this->mail->isHTML(true);
-        $this->mail->setFrom("rafaelnascimento0505@gmail.com", "Equipe RADelivery");
+        $this->mail->setFrom('from@example.com', 'Mailer');
 
 
     }

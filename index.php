@@ -7,12 +7,12 @@ use Source\App\Email;
 $send = new Email();
 
 $send->sendMail(
-    "Assunto de Teste",
-    "<p>Esse é um e-mail de <b>teste</b>!</p>",
-    "rafaelnascimento0505@gmail.com",
-    "Equipe RADelivery",
-    "rafael_nascimento@aol.com",
-    "Rafael"
+    "Subject Test",
+    "<p>Body e-mail <b>here</b>!</p>",
+    "support@email.com",
+    "Support",
+    "client@email.com",
+    "Name Client"
 );
 
 
