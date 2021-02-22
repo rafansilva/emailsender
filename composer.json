@@ -1,0 +1,24 @@
+{
+    "name": "rafael/notification",
+    "description": "This is a library that uses composer as the basis for generating email notifications",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafael N. Silva",
+            "email": "rafaelnascimento0505@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "Source\\": "source/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "6.2.0"
+    }
+}
