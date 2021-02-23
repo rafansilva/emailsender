@@ -10,23 +10,23 @@ class Email
 {
     private $mail = \stdClass::class;
 
-    public function __construct()
+    public function __construct($smtpDebug, $host, $user, $pass, $smtpSecure, $port, $setFromEmail, $setFromName)
     {
         $this->mail = new PHPMailer(true);
-        $this->mail->SMTPDebug = 2;                      //Enable verbose debug output
-        $this->mail->isSMTP();                                            //Send using SMTP
-        $this->mail->Host = 'smtp.example.com';                     //Set the SMTP server to send through
-        $this->mail->SMTPAuth = true;                                   //Enable SMTP authentication
-        $this->mail->Username = 'user@example.com';                     //SMTP username
-        $this->mail->Password = 'secret';                               //SMTP password
-        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-        $this->mail->Port = 587;
+        $this->mail->SMTPDebug = $smtpDebug;
+        $this->mail->isSMTP();
+        $this->mail->Host = $host;
+        $this->mail->SMTPAuth = true;
+        $this->mail->Username = $user;
+        $this->mail->Password = $pass;
+        $this->mail->SMTPSecure = $smtpSecure;
+        $this->mail->Port = $port;
 
         $this->mail->CharSet = "utf-8";
         $this->mail->setLanguage("br");
 
         $this->mail->isHTML(true);
-        $this->mail->setFrom('from@example.com', 'Mailer');
+        $this->mail->setFrom($setFromEmail, $setFromName);
 
 
     }
