@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Source\App;
+namespace RafaNSilva\Notification;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

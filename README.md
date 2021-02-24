@@ -7,19 +7,39 @@ To install the library, run the following command:
 ```sh
 composer require rafansilva/notification
 ```
+or:
+```sh
+"rafansilva/notification": "1.0.*"
+```
 
 To use the library, simply require the composer to autoload, invoke the class and call the method:
 
 ```sh
-<? php
+<?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-USE Notification\Email;
+use RafaNSilva\Notification\Email;
 
-$ email = new Email (2, "mail.host.com", "your@email.com", "your-pass", "smtp secure (tls/ssl)", "port (587)", "from@email.com", "FromName");
+$email = new Email(
+    2,
+    "mail.host.com",
+    "your@email.com",
+    "your-pass",
+    "smtp secure (tls/ssl)",
+    "port (587)",
+    "from@email.com",
+    "FromName"
+);
 
-$ email->sendEmail ("Subject", "Content", "reply@email.com", "Replay Name", "address@email.com", "AddressName");
+$email->sendMail(
+    "Subject",
+    "Content",
+    "reply@email.com",
+    "Replay Name",
+    "address@email.com",
+    "AddressName"
+);
 ```
 
 Note that the entire configuration of sending the email is using the magic method builder! Once the builder method has been invoked within your application, your system will be able to take the shots.
@@ -34,5 +54,5 @@ License
 MIT
 
 [//]: #
-[Rafael N. Silva]: <mailto: rafaelnascimento0505@gmail.com>
+[Rafael N. Silva]: <https://github.com/rafansilva>
 [phpMailer]: <https://github.com/PHPMailer/PHPMailer>

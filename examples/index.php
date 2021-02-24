@@ -1,29 +1,29 @@
 <?php
 
-require __DIR__ . "/../vendor/autoload.php";
+require __DIR__ . '/../vendor/autoload.php';
 
-use Source\App\Email;
+use RafaNSilva\Notification\Email;
 
-$send = new Email(
+$email = new Email(
     2,
-    "smtp.example.com",
-    "user@example.com",
-    "secret",
-    "tls",
-    "587",
-    "from@example.com",
-    "Mailer"
+    "mail.host.com",
+    "your@email.com",
+    "your-pass",
+    "smtp secure (tls/ssl)",
+    "port (587)",
+    "from@email.com",
+    "FromName"
 );
 
-$send->sendMail(
-    "Here is the subject",
-    "This is the HTML message body <b>in bold!</b>",
-    "info@example.com",
-    "Information",
-    "joe@example.net",
-    "Joe User"
+$email->sendMail(
+    "Subject",
+    "Content",
+    "reply@email.com",
+    "Replay Name",
+    "address@email.com",
+    "AddressName"
 );
 
 
-var_dump($send);
+var_dump($email);
 
