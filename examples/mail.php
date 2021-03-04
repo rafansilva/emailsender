@@ -26,12 +26,12 @@ use RafaNSilva\Notification\Email;
 
 $mail = new Email();
 
-//$mail->bootstrap(
-//    "Example of sending email",
-//    "<h1>This is the HTML message body</h1>",
-//    "rafaelnascimento0505@outlook.com",
-//    "Rafael"
-//)->send();
+$mail->bootstrap(
+    "Example of sending email",
+    "<h1>This is the HTML message body</h1>",
+    "rafael_nascimento@aol.com",
+    "Rafael"
+)->send();
 
 /**
  * Email with Attachments:
@@ -40,7 +40,7 @@ $mail = new Email();
 $mail->bootstrap(
     "Email with Attachments",
     "<p>See the attachment below</p>",
-    "rafaelnascimento0505@gmail.com",
+    "rafael_nascimento@aol.com",
     "Rafael"
 )->attach(__DIR__ . "/image/joinha.jpg", "Joinha")->send();
 
