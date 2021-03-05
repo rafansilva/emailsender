@@ -1,0 +1,32 @@
+{
+  "name": "rafansilva/emailsender",
+  "description": "Uma biblioteca simples para enviar e-mails que abstrai o comportamento da PHPMAILER",
+  "keywords": [
+    "email",
+    "e-mail",
+    "notification",
+    "Rafael N. Silva",
+    "sender",
+    "email sender",
+    "phpmailer"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rafael N. Silva",
+      "email": "rafaelnascimento0505@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "phpmailer/phpmailer": "v6.3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "RafaNSilva\\Notification\\": "src"
+    }
+  }
+}
