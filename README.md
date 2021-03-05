@@ -1,4 +1,4 @@
-# CaféApi Library Test
+# EmailSender Library
 
 [![Maintainer](http://img.shields.io/badge/maintainer-_rafanas_-blue.svg?style=flat-square)](https://www.instagram.com/_rafanas_/)
 [![Source Code](http://img.shields.io/badge/source-rafansilva/emailsender-blue.svg?style=flat-square)](https://github.com/rafansilva/emailsender)
@@ -11,13 +11,13 @@
 
 ###### EmailSender is a class that abstracts the behavior of the PhpMailer component, and simplifies the sending of emails via SMTP.
 
-EmailSender é uma classe que abstrai o comportamento do componente PhpMailer, e simplifica o envio de e-mails via SMTP.
+EmailSender é uma classe que abstrai o comportamento do componente PHPMailer, e simplifica o envio de e-mails via SMTP.
 
 ### Highlights
 
 - Simple installation (Instalação simples)
 - Simplified initial setup (Configuração inicial simplificada)
-- Friendly methods for sending emails and attachments (Métodos amigaveis para envio de e-mails e anexos)
+- Simple methods for sending emails and attachments (Métodos simples para envio de e-mails e anexos)
 - Composer ready and PSR-2 compliant (Pronto para o composer e compatível com PSR-2)
 
 ## Installation
@@ -40,43 +40,52 @@ composer require rafansilva/emailsender
 
 Para mais detalhes sobre como usar, veja uma pasta de exemplo no diretório do componente. Nela terá um exemplo de uso da classe. Ele funciona assim:
 
-#### User endpoint:
+#### Setup to send an email:
 
 ```php
 <?php
 
-require __DIR__ . "/../vendor/autoload.php";
-
-use rafansilva\emailsender\Me;
-
-$me = new Me(
-    "suaapi.url.com",
-    "seu@email.com.br",
-    "suasenha"
-);
-
-//me
-$user = $me->me();
-
-//update
-$user->update([
-    "first_name" => "Robson",
-    "last_name" => "Leite",
-    "genre" => "male",
-    "datebirth" => "1980-01-02",
-    "document" => "888888888"
-]);
-
-//photo
-$user->photo($_FILES["photo"]);
-
-//test and result
-if ($user->error()) {
-    $user->error(); //object
-} else {
-    $user->response(); //object
-}
+/**
+ * TIP: Put these constants in your project's config file.
+ */
+define("CONF_MAIL_HOST", "smtp.example.com"); //Set the SMTP server to send through
+define("CONF_MAIL_PORT", "587"); //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS`
+define("CONF_MAIL_USER", "user@example.com"); //SMTP username
+define("CONF_MAIL_PASS", "password"); //SMTP password
+define("CONF_MAIL_SENDER", ["name" => "yourName", "address" => "your@email.com"]); //Change here the name and email of who will send the email
+define("CONF_MAIL_OPTION_DEBUG", 0); //To enable verbose debug output use 2 or 0 to disable
+define("CONF_MAIL_OPTION_LANG", "br"); //Your language
+define("CONF_MAIL_OPTION_HTML", true); //Set email format to HTML
+define("CONF_MAIL_OPTION_AUTH", true); //Enable SMTP authentication
+define("CONF_MAIL_OPTION_SECURE", "tls"); //Enable TLS encryption
+define("CONF_MAIL_OPTION_CHARSET", "utf-8"); //Default charset is utf-8
 ```
+#### Example of sending email and attachments:
+
+```php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use RafaNSilva\Notification\Email;
+
+$mail = new Email();
+
+$mail->bootstrap(
+    "Example of sending email",
+    "<h1>This is the HTML message body</h1>",
+    "joe@example.net",
+    "Joe User"
+)->send();
+
+$mail->bootstrap(
+    "Email with Attachments",
+    "<p>See the attachment below</p>",
+    "joe@example.net",
+    "Joe User"
+)->attach(__DIR__ . "/image/joinha.jpg", "Joinha")->send();
+```
+
 
 ## Contributing
 
