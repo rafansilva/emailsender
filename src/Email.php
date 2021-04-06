@@ -1,7 +1,7 @@
 <?php
 
 
-namespace RafaNSilva\Notification;
+namespace RafaNSilva\Support;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
  * Class Email
  *
  * @author Rafael N. Silva
- * @package RafaNSilva\Notification
+ * @package RafaNSilva\Support
  */
 class Email
 {
@@ -19,6 +19,9 @@ class Email
 
     /** @var PHPMailer */
     private $mail;
+
+    /** @var Exception */
+    private $error;
 
 
     /**
@@ -82,19 +85,19 @@ class Email
      */
     public function send(string $from = CONF_MAIL_SENDER["address"], string $fromName = CONF_MAIL_SENDER["name"]): bool
     {
-        if (empty($this->data)) {
-            throw new \Exception("Error sending, please check the data");
-        }
-
-        if (!filter_var($this->data->recipientMail, FILTER_VALIDATE_EMAIL)) {
-            throw new \Exception("Recipient email is not valid");
-        }
-
-        if (!filter_var($from, FILTER_VALIDATE_EMAIL)) {
-            throw new \Exception("The sender email is not valid");
-        }
-
         try {
+            if (empty($this->data)) {
+                throw new Exception("Error sending, please check the data");
+            }
+
+            if (!filter_var($this->data->recipientMail, FILTER_VALIDATE_EMAIL)) {
+                throw new Exception("Recipient email is not valid");
+            }
+
+            if (!filter_var($from, FILTER_VALIDATE_EMAIL)) {
+                throw new Exception("The sender email is not valid");
+            }
+
             $this->mail->Subject = $this->data->subject;
             $this->mail->msgHTML($this->data->body);
             $this->mail->addAddress($this->data->recipientMail, $this->data->recipientName);
@@ -109,7 +112,7 @@ class Email
             $this->mail->send();
             return true;
         } catch (Exception $exception) {
-            echo $exception->getMessage();
+            $this->error = $exception;
             return false;
         }
     }
@@ -122,4 +125,11 @@ class Email
         return $this->mail;
     }
 
+    /**
+     * @return Exception|null
+     */
+    public function error(): ?Exception
+    {
+        return $this->error;
+    }
 }

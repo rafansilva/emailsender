@@ -23,7 +23,7 @@ define("CONF_MAIL_OPTION_CHARSET", "utf-8"); //Default charset is utf-8
  * Example of sending email:
  */
 
-use RafaNSilva\Notification\Email;
+use RafaNSilva\Support\Email;
 
 $mail = new Email();
 
