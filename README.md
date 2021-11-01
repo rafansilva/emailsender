@@ -1,6 +1,6 @@
 # EmailSender Library
 
-[![Maintainer](http://img.shields.io/badge/maintainer-_rafanas_-blue.svg?style=flat-square)](https://www.instagram.com/_rafanas_/)
+[![Maintainer](http://img.shields.io/badge/maintainer-@rafansilva-blue.svg?style=flat-square)](https://github.com/rafansilva/)
 [![Source Code](http://img.shields.io/badge/source-rafansilva/emailsender-blue.svg?style=flat-square)](https://github.com/rafansilva/emailsender)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/rafansilva/emailsender.svg?style=flat-square)](https://packagist.org/packages/rafansilva/emailsender)
 [![Latest Version](https://img.shields.io/github/release/rafansilva/emailsender.svg?style=flat-square)](https://github.com/rafansilva/emailsender/releases)
